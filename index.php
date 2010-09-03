@@ -49,5 +49,6 @@ foreach($comic_list as $comic) {
 ### END ###
 prev_next_links();
 ?>
+<p>Get the code at <a href='http://gitorious.org/comics-reader'>gitorious.org/comics-reader</a>.
 </body>
 </html>
