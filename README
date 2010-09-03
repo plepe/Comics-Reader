@@ -1,0 +1,8 @@
+Comics Reader is an old project to improve reading of Comics. Before I started using RSS readers, I used it to avoid having to browse the web pages of all my web comics I liked to read, and rather have them all on one page. Later, when I started using RSS readers, I noticed that many web comics have no RSS feed or supply only a link to the webpage. Therefore I extended this Comics Reader to provide a RSS feed of its available comics. more…
+
+Hope you find this useful and start to contribute yourself!
+
+1. Copy conf.php-dist to conf.php and change to your liking.
+2. Create a mysql database using the script init.sql:
+   # mysql -uUSER -p DB < init.sql
+
