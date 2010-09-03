@@ -1,0 +1,8 @@
+<?
+$mysql_data['db']="DB";
+$mysql_data['host']="localhost";
+$mysql_data['user']="USER";
+$mysql_data['passwd']="PASSWORD";
+$mysql_data['debug']=0;
+
+$comic_list=array("sinfest", "uf", "sluggy", "phd", "gpf", "garfield", "calvinandhobbes");
