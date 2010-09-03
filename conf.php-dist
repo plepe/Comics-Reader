@@ -5,4 +5,4 @@ $mysql_data['user']="USER";
 $mysql_data['passwd']="PASSWORD";
 $mysql_data['debug']=0;
 
-$comic_list=array("sinfest", "uf", "sluggy", "phd", "gpf", "garfield", "calvinandhobbes");
+$comic_list=array("sinfest", "uf", "sluggy", "phd", "gpf", "garfield", "calvinandhobbes", "menagea3");
