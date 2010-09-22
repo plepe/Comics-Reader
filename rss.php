@@ -34,13 +34,9 @@ function show_comic($id, $name, $url, $gfx) {
 $today=date_get_today();
 for($i=-6; $i<=0; $i++) {
   $date=date_add($today, $i);
-  include("comic_sinfest.php");
-  include("comic_uf.php");
-  include("comic_sluggy.php");
-  include("comic_phd.php");
-  include("comic_gpf.php");
-  include("comic_garfield.php");
-  include("comic_calvinandhobbes.php");
+  foreach($comic_list as $comic) {
+    include("comic_{$comic}.php");
+  }
 }
 
 print "</channel>\n";
