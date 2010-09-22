@@ -1,7 +1,7 @@
 <?
-require_once("../comics_conf.php");
-require_once("../inc/date.php");
-require_once("../inc/sql.php");
+require_once("conf.php");
+require_once("inc/date.php");
+require_once("inc/sql.php");
 require_once("functions.php");
 $sql=new sql($mysql_data);
 
