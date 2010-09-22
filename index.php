@@ -1,4 +1,5 @@
 <?
+Header("content-type: text/html; charset=utf-8");
 require_once("conf.php");
 require_once("inc/date.php");
 require_once("inc/sql.php");

@@ -9,7 +9,7 @@ if(!$gfx=get_comic("menagea3", $date)) {
   else
     $gfx=null;
 }
-show_comic("menagea3", "M&eacute;nage &agrave; 3", "http://www.menagea3.net", $gfx);
+show_comic("menagea3", "Ménage à 3", "http://www.menagea3.net", $gfx);
 
 
 
