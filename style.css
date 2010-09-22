@@ -1,0 +1,22 @@
+body {
+  background: #333333;
+  color: #777777;
+}
+.comic {
+  border: 3px solid #000000;
+  background: white;
+  color: #000000;
+}
+div.entry {
+  margin-top: 4px;
+}
+h1 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #FF0000;
+}
+a {
+  color: #FF0000;
+  text-decoration: none;
+}

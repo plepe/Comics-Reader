@@ -17,7 +17,7 @@ $date_month_abbr=array(1=>"jan", "feb", "mar", "apr", "may", "jun", "jul", "aug"
 <html>
 <head>
 <title>Comics for <?=$date?></title>
-<link rel="stylesheet" href="comics.css" type="text/css">
+<link rel="stylesheet" href="style.css" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="Daily Comics RSS" href="rss.php" />
 </head>
 <body>
