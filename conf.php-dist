@@ -5,4 +5,9 @@ $mysql_data['user']="USER";
 $mysql_data['passwd']="PASSWORD";
 $mysql_data['debug']=0;
 
+// How many days back should the RSS feed report comics (set to 0 for only
+// current day)
+$rss_days=6;
+
+// Which comics should be included in the RSS feed
 $comic_list=array("sinfest", "uf", "sluggy", "phd", "gpf", "garfield", "calvinandhobbes", "menagea3");

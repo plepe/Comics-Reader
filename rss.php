@@ -32,7 +32,7 @@ function show_comic($id, $name, $url, $gfx) {
 }
 
 $today=date_get_today();
-for($i=-6; $i<=0; $i++) {
+for($i=-$rss_days; $i<=0; $i++) {
   $date=date_add($today, $i);
   foreach($comic_list as $comic) {
     include("comic_{$comic}.php");
