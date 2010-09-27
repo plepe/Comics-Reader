@@ -1,0 +1,2 @@
+The datadir contains the database files. It needs to be writeable by the 
+webserver.

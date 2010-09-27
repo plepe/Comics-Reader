@@ -11,44 +11,53 @@ class sql {
     if($this->data[debug])
       print "<!-- SQL-Query: $query -->\n";
 
-    if(!$res=mysql_db_query($this->data[db], $query, $this->linkid)) {
-      echo mysql_error();
+    if(!$res=sqlite_query($this->linkid, $query, SQLITE_ASSOC, &$error)) {
+      echo $error;
       exit;
     }
 
     return $res;
   }
 
-  function __construct($mysql_data) {
+  function __construct($sqlite_data) {
     global $design_hidden;
 
-    $this->data=$mysql_data;
+    $this->data=$sqlite_data;
 
     if($design_hidden)
       $this->data[debug]=0;
 
-    if(!$this->linkid=mysql_connect($this->data[host], $this->data[user], $this->data[passwd])) {
+    $init_necessary=0;
+    if((!file_exists($this->data['file']))||(filesize($this->data['file'])==0)) {
+      $init_necessary=1;
+    }
+
+    if(!$this->linkid=sqlite_open($this->data['file'])) {
       echo "Fehler beim Verbindungsaufbau!<br>";
       exit;
+    }
+
+    if($init_necessary) {
+      sqlite_exec($this->linkid, file_get_contents("init.sql"));
     }
 
     return 1;
   }
 
   function fetch_assoc($res) {
-    return mysql_fetch_assoc($res);
+    return sqlite_fetch_array($res, SQLITE_ASSOC);
   }
 
   function fetch($res) {
-    return mysql_fetch_assoc($res);
+    return sqlite_fetch_array($res, SQLITE_ASSOC);
   }
 
   function num_rows($res) {
-    return mysql_num_rows($res);
+    return sqlite_num_rows($res);
   }
 
   function insert_id() {
-    return mysql_insert_id();
+    return sqlite_last_insert_rowid($this->linkid);
   }
 
   function build_set($data, $exclude=array()) {

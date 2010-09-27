@@ -1,9 +1,7 @@
 <?
-$mysql_data['db']="DB";
-$mysql_data['host']="localhost";
-$mysql_data['user']="USER";
-$mysql_data['passwd']="PASSWORD";
-$mysql_data['debug']=0;
+// Make sure the data-directory is writeable by the webserver 
+// (e.g. "chmod 777 data")
+$sqlite_data['file']="data/db";
 
 // How many days back should the RSS feed report comics (set to 0 for only
 // current day)

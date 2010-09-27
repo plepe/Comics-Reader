@@ -17,7 +17,7 @@ function get_comic($comic, $date) {
 function set_comic($comic, $date, $gfx) {
   global $sql;
 
-  $sql->query("insert into comics_date set comic='$comic', date='$date', gfx=\"$gfx\"");
+  $sql->query("insert into comics_date values ('$comic', '$date', \"$gfx\")");
 
   return 1;
 }

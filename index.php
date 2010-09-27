@@ -4,7 +4,7 @@ require_once("conf.php");
 require_once("inc/date.php");
 require_once("inc/sql.php");
 require_once("functions.php");
-$sql=new sql($mysql_data);
+$sql=new sql($sqlite_data);
 
 $date=$_REQUEST["date"];
 if(!$date)
