@@ -1,15 +1,15 @@
 <?
 # Menagea3
-$gfx=null;
-if(!$gfx=get_comic("menagea3", $date)) {
+$menagea3_name="Ménage à 3";
+$menagea3_url="http://www.menagea3.net";
+
+function menagea3_check($date) {
+  $gfx=null;
+
   $dt=new DateTime($date);
   $link_date=$dt->format('Ymd');
   if(!@fopen($gfx="http://www.menagea3.net/comics/mat$link_date.png", "r"))
     $gfx=null;
 
-  set_comic("menagea3", $date, $gfx);
+  return $gfx;
 }
-show_comic("menagea3", "Ménage à 3", "http://www.menagea3.net", $gfx);
-
-
-

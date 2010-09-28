@@ -1,7 +1,11 @@
 <?
 # Sluggy Freelance
-$gfx=null;
-if(!$gfx=get_comic("sluggy", $date)) {
+$sluggy_name="Sluggy Freelance";
+$sluggy_url="http://www.sluggy.com";
+
+function sluggy_check($date) {
+  $gfx=null;
+
   $f=fopen("http://www.sluggy.com/daily.php?date=".date_ftime($date, "%y%m%d"), "r");
   while($r=fgets($f)) {
     if(eregi("<img src=\"http://www.sluggy.com/images/comics/([0-9a-z\.]*)\" alt=\"([0-9a-z\.]*)\">", $r, $m)) {
@@ -13,8 +17,5 @@ if(!$gfx=get_comic("sluggy", $date)) {
   }
   fclose($f);
 
-  set_comic("sluggy", $date, $gfx);
+  return $gfx;
 }
-show_comic("sluggy", "Sluggy Freelance", "http://www.sluggy.com", $gfx);
-
-

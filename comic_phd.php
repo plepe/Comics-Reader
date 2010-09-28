@@ -1,13 +1,14 @@
 <?
 # Phd Comics
-$gfx=null;
-if(!$gfx=get_comic("phd", $date)) {
+$phd_name="Phd-Comics";
+$phd_url="http://www.phdcomics.com";
+
+function phd_check($date) {
+  $gfx=null;
+
   $gfx=sprintf("http://www.phdcomics.com/comics/archive/phd%ss.gif", date_ftime($date, "%m%d%y"), $num);
   if(!@fopen($gfx, "r"))
     $gfx=null;
 
-  set_comic("phd", $date, $gfx);
+  return $gfx;
 }
-show_comic("phd", "Phd-Comics", "http://www.phdcomics.com", $gfx);
-
-

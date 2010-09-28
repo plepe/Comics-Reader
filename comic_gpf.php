@@ -1,7 +1,11 @@
 <?
 # GPF Comics
-$gfx=null;
-if(!$gfx=get_comic("gpf", $date)) {
+$gpf_name="GPF-Comics";
+$gpf_url="http://www.gpf-comics.com";
+
+function gpf_check($date) {
+  $gfx=null;
+
   @$f=fopen("http://www.gpf-comics.com/d/".date_ftime($date, "%Y%m%d").".html", "r");
   if($f) {
     while($r=fgets($f)) {
@@ -12,8 +16,5 @@ if(!$gfx=get_comic("gpf", $date)) {
     fclose($f);
   }
 
-  set_comic("gpf", $date, $gfx);
+  return $gfx;
 }
-show_comic("gpf", "GPF-Comics", "http://www.gpf-comics.com", $gfx);
-
-

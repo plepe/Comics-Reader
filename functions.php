@@ -19,20 +19,16 @@ function get_comic($comic, $date) {
       return null;
     elseif($elem['last']>60)
       return null;
-    else
-      return 1;
   }
 
-  return null;
+  $fun="{$comic}_check";
+  $gfx=$fun($date);
+  if($gfx)
+    $gfx_sql="\"$gfx\"";
+  else
+    $gfx_sql="null";
+
+  $sql->query("insert or replace into comics_date values ('$comic', '$date', $gfx_sql, null, datetime('now'))");
+
+  return $gfx;
 }
-
-function set_comic($comic, $date, $gfx) {
-  global $sql;
-
-  if($gfx!==1)
-    $sql->query("insert or replace into comics_date values ('$comic', '$date', \"$gfx\", datetime('now'))");
-
-  return 1;
-}
-
-

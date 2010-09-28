@@ -13,6 +13,9 @@ if(!$date)
 $date_exp=explode("-", $date);
 $date_month_abbr=array(1=>"jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec");
 
+foreach($comic_list as $comic) {
+  include "comic_$comic.php";
+}
 ?>
 <html>
 <head>
@@ -24,31 +27,73 @@ $date_month_abbr=array(1=>"jan", "feb", "mar", "apr", "may", "jun", "jul", "aug"
 <?
 function prev_next_links($id=0) {
   global $date;
+  $ret="";
 
-  print "<a href='?date=".date_add($date, -1).($id?"#$id":"")."'>previous</a>\n";
-  print "$date\n";
-  print "<a href='?date=".date_add($date,  1).($id?"#$id":"")."'>next</a>\n";
+  $i=-1;
+  if($id) {
+    $found=false;
+    while(($i>-10)&&(!$found)) {
+      if(get_comic($id, date_add($date, $i))) {
+        $found=true;
+      }
+      else
+        $i--;
+    }
+    if(!$found)
+      $i=-1;
+  }
+
+  $ret.="<a href='?date=".date_add($date, $i).($id?"#$id":"")."'>previous</a>\n";
+  $ret.="$date\n";
+
+  $i=1;
+  if($id) {
+    $found=false;
+    while(($i<10)&&(date_add($date, $i)<=date_get_today())&&(!$found)) {
+      if(get_comic($id, date_add($date, $i))) {
+        $found=true;
+      }
+      else
+        $i++;
+    }
+    if(!$found)
+      $i=1;
+  }
+
+  $ret.="<a href='?date=".date_add($date,  $i).($id?"#$id":"")."'>next</a>\n";
+
+  return $ret;
 }
 
-function show_comic($id, $name, $url, $gfx) {
-  print "<div class='entry'><a name='$id'><h1><a href='$url'>$name</a></h1>\n";
-  prev_next_links($id);
-  print "<br>\n";
+function show_comic($id, $date) {
+  $ret="";
+  $gfx=get_comic($id, $date);
+  $name="{$id}_name";
+  $url="{$comic}_url";
+  global $$name;
+  global $$url;
+
+  $ret.="<div class='entry'><a name='$id'><h1><a href='{$$url}'>{$$name}</a></h1>\n";
+  $ret.=prev_next_links($id);
+  $ret.="<br>\n";
   if(!$gfx)
-    print "<span class='comic'>no comic there (yet)</div>";
+    $ret.="<span class='comic'>no comic there (yet)</div>";
   else
-    print "<img class='comic' src='$gfx' alt='no comic there (yet)'><br>\n";
-  print "</div>\n";
+    $ret.="<img class='comic' src='$gfx' alt='no comic there (yet)'><br>\n";
+  $ret.="</div>\n";
+
+  return $ret;
 }
 
-prev_next_links();
+print prev_next_links();
+print "<br>\n";
 
 foreach($comic_list as $comic) {
-  include("comic_{$comic}.php");
+  print show_comic($comic, $date);
 }
 
 ### END ###
-prev_next_links();
+print prev_next_links();
 ?>
 <p>Get the code at <a href='http://gitorious.org/comics-reader'>gitorious.org/comics-reader</a>.
 </body>
