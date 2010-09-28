@@ -9,10 +9,10 @@ if(!$gfx=get_comic("uf", $date)) {
     }
   }
 
-  if($gfx) {
+  if($gfx)
     $gfx=sprintf("http://www.userfriendly.org/cartoons/archives/%s", $gfx);
-    set_comic("uf", $date, $gfx);
-  }
+
+  set_comic("uf", $date, $gfx);
 }
 show_comic("uf", "User Friendly", "http://www.userfriendly.org", $gfx);
 

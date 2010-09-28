@@ -13,8 +13,7 @@ if(!$gfx=get_comic("sluggy", $date)) {
   }
   fclose($f);
 
-  if($gfx)
-    set_comic("sluggy", $date, $gfx);
+  set_comic("sluggy", $date, $gfx);
 }
 show_comic("sluggy", "Sluggy Freelance", "http://www.sluggy.com", $gfx);
 

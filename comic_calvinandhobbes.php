@@ -12,8 +12,7 @@ if(!$gfx=get_comic("calvinandhobbes", $date)) {
   }
   fclose($f);
 
-  if($gfx)
-    set_comic("calvinandhobbes", $date, $gfx);
+  set_comic("calvinandhobbes", $date, $gfx);
 }
 show_comic("calvinandhobbes", "Calvin and Hobbes", "http://www.gocomics.com/calvinandhobbes/".date_ftime($date, "%Y/%m/%d/"), $gfx);
 

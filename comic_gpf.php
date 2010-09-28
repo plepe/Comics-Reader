@@ -7,12 +7,12 @@ if(!$gfx=get_comic("gpf", $date)) {
     while($r=fgets($f)) {
       if(eregi("<IMG ALT=\"\" BORDER=0 SRC=\"/comics/([a-z0-9\.]*)\".*><BR>", $r, $m)) {
         $gfx="http://www.gpf-comics.com/comics/$m[1]";
-        set_comic("gpf", $date, $gfx);
       }
     }
     fclose($f);
   }
-  else $gfx=null;
+
+  set_comic("gpf", $date, $gfx);
 }
 show_comic("gpf", "GPF-Comics", "http://www.gpf-comics.com", $gfx);
 
