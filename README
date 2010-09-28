@@ -3,6 +3,4 @@ Comics Reader is an old project to improve reading of Comics. Before I started u
 Hope you find this useful and start to contribute yourself!
 
 1. Copy conf.php-dist to conf.php and change to your liking.
-2. Create a mysql database using the script init.sql:
-   # mysql -uUSER -p DB < init.sql
-
+2. Make sure the data/-directory is writeable by the web server
